@@ -5,7 +5,7 @@
 #  QRコード画像に収めたメタデータを、jpeg画像にXMPで反映します。
 # 
 # Created:     11/01/2018
-# Updated:     2020/3/6
+# Updated:     2020/7/2
 #-------------------------------------------------------------------------------
 import os
 import os.path
@@ -46,6 +46,9 @@ def decodeQR(im):
     ret,thresh = cv2.threshold(img_gb,80,255,cv2.THRESH_BINARY)
     edges = cv2.Canny(thresh, 90 ,90,apertureSize = 3)
     contours, hierarchy = cv2.findContours(edges, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    if hierarchy is None:
+        var = []
+        return var
 
     hierarchy = hierarchy[0]
     detect = []
