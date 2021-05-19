@@ -5,7 +5,7 @@
 #  QRコード画像に収めたメタデータを、jpeg画像にXMPで反映します。
 # 
 # Created:     11/01/2018
-# Updated:     2021/3/5
+# Updated:     2021/5/20
 #-------------------------------------------------------------------------------
 import os
 import os.path
@@ -83,7 +83,8 @@ def registerNS(imgpath, img):
         
     stdout, stderr = p.communicate()
     if len(stderr) != 0:
-        raise RuntimeError('EXIV2 threw error:\n' + stderr.decode('utf-8'))
+        print('EXIV2 threw error:\n' + stderr.decode('utf-8'))
+        #raise RuntimeError('EXIV2 threw error:\n' + stderr.decode('utf-8'))
     
 
 def ID2str(id):
